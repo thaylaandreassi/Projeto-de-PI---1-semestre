@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="../js/funcoes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- PERGUNTAR!!! -->
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+
+    <link rel="icon" href="../assets/icon/LogoMATprojetoOrange.png">
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <!-- IMPORTANDO ICONES DO GOOGLE - Início ============================================================================================================================ -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'>
+    <!-- IMPORTANDO ICONES DO GOOGLE - Fim ============================================================================================================================ -->
+
+    <title>Dashboard</title>
+</head>
+
+<body onload="validarSessao(), obterDadosGrafico(1)">
+    <!-- COMEÇO DA NAVBAR ============================================================================================================================ -->
+    <nav>
+        <div class="container">
+            <img src="../assets/icon/LogoMATprojetoOrange.png" alt="" class="logo">
+
+            <div class="adm">
+                <span class="nome">Bem-vindo, <span id="b_usuario">usuário</span>!</span>
+            </div>
+
+            <!-- <button id="menu-btn">
+                <span class="material-icons-sharp">menu</span>
+            </button> -->
+        </div>
+    </nav>
+    <!-- FIM DA NAVBAR ============================================================================================================================ -->
+
+    <main>
+        <!--============================== COMEÇO BARRA LATERAL - MENU =============================================== -->
+        <aside>
+            <!-- TAG UTILIZADA PARA CRIAR UMA BARRA LATERAL, NO CASO O MENU  -->
+            <div class="sidebar">
+                <div class="logo-details">
+                    <div class="logo_name">MAT</div>
+                    <i class='bx bx-menu' id="btn"></i>
+                </div>
+
+                <ul class="nav-list">
+                    <li>
+                        <a href="dashboard.html">
+                            <i class='bx bx-grid-alt'></i>
+                            <span class="links_name">Dashboard</span>
+                        </a>
+                        <span class="tooltip">Dashboard</span>
+                    </li>
+
+                    <li>
+                        <a href="https://mat-suporte.freshdesk.com/support/home">
+                            <i class='bx bx-support'></i>
+                            <span class="links_name">Suporte</span>
+                        </a>
+                        <span class="tooltip">Support</span>
+                    </li>
+
+                    <li class="profile">
+                        <div class="profile-details">
+                            <div class="name_job">
+                                <div class="name"><span id="c_usuario">usuário</span></div>
+                                <div class="job">Administrador</div>
+                            </div>
+                        </div>
+                        <i onclick="limparSessao()" class='bx bx-log-out' id="log_out"></i>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!--=================================== FIM BARRA LATERAL - MENU  =============================================-->
+
+
+        <!--=================================== COMEÇANDO A PARTE CENTRAL  =============================================-->
+        <section class="meio">
+            <!-- =========================== criando os três cards =======================================-->
+            <div class="regua">
+
+                <div class="item-regua vagas-disponiveis">
+                  <h2><span id="span_maior"></span></h2>
+                  <h3> Menor fluxo de carros</h3>
+        
+        
+                </div>
+                <div class="item-regua2 vagas-ocupadas">
+        
+                  <h2>Alertas</h2>
+                  <h3><span id="span_analytics"></span></h3>
+                </div>
+                <div class="item-regua horario-pico">
+                  <h2><span id="span_menor"></span></h2>
+                  <h3> Menor fluxo de carros</h3>
+              
+                </div>
+              </div>
+            <!-- =========================== fim dos cards =======================================-->
+
+
+            <!-- =========================== criando os gráficos =======================================-->
+            <div class="graficos">
+
+                <!-- <div class="grafico2">
+                    <h2>Fluxo de Carros</h2>
+                    <canvas id="myChart2" style="position: relative; height:40vh; width:40vw; display:flex;"></canvas>
+                </div> -->
+
+                <h2>Vagas Ocupadas</h2>
+                <canvas id="canvas_grafico" style="position: relative; height:40vh; width:40vw; display:flex;"></canvas>
+
+            </div>
+            <!-- =========================== fim dos gráficos =======================================-->
+
+            <!-- =========================== criando o analytics =======================================-->
+            <div class="card">
+                <div class="titulo">
+                    <h1>Analytics</h1>
+                </div>
+
+                <div class="critico">
+
+                    <div class="circulo_red"></div>
+                    <div class="texto1">
+                        <h3>Crítico</h3>
+                    </div>
+                    <div class="hora">
+                        <h3>30%</h3>
+                    </div>
+
+                </div>
+
+                <div class="cuidado">
+
+                    <div class="circulo_yellow"></div>
+                    <div class="texto3">
+                        <h3>Cuidado</h3>
+                    </div>
+                    <div class="hora">
+                        <h3>50%</h3>
+                    </div>
+
+                </div>
+
+                <div class="ideal">
+
+                    <div class="circulo_green"></div>
+                    <div class="texto2">
+                        <h3>Ideal</h3>
+                    </div>
+                    <div class="hora">
+                        <h3>75%</h3>
+                    </div>
+
+                </div>
+
+                <div class="lotacao">
+
+                    <div class="circulo_blue"></div>
+                    <div class="texto3">
+                        <h3>Lotação</h3>
+                    </div>
+                    <div class="hora">
+                        <h3>95%</h3>
+                    </div>
+
+                </div>
+            </div>
+            <!-- =========================== fim dos analytics  =======================================-->
+        </section>
+        <!--=================================== FIM DA PARTE CENTRAL  =============================================-->
+    </main>
+</body>
+
+<script src="dashboard.js"></script>
+<script src="menu.js"></script>
+
+</html>
